@@ -20,31 +20,32 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Delete A User</h1>
+                        <h1 class="mt-4">Infomation User Details</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="/admin/users">Table User</a></li>
-                            <li class="breadcrumb-item active">Delete a user</li>
+                            <li class="breadcrumb-item active">Infomation User Details</li>
                         </ol>
-                        <div class="container mt-5">
+                        <div class="mt-5">
                           <div class="row">
-                            <div class="col-12 mx-auto " style="width: 60%;">
+                            <div class="col-12 mx-auto">
                               <div class="d-flex justify-content-between">
-                                <h3>Delete User with ID: ${id}</h3>
+                                <h3>Infomation User Details</h3>
                               </div>
                               <hr />
-                              <div class="alert alert-danger">
-                                Are you sure to delete this user? This action cannot be undone.
-                              </div>
-                              <div class="d-flex justify-content-between">
+                              <div class="card" style="width: 60%;">
+                                
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Id: ${userDetails.id}</li>
+                                        <li class="list-group-item">Email: ${userDetails.email}</li>
+                                        <li class="list-group-item">Full name: ${userDetails.fullName}</li>
+                                        <li class="list-group-item">Address: ${userDetails.address}</li>
+                                        <li class="list-group-item">Phone number: ${userDetails.phone}</li>
+                                    </ul>
+                                </div>
                                 <a href="/admin/users" class="btn btn-primary mt-2">Back</a>
-                                <form:form action="/admin/user/delete" method="post" modelAttribute="deleteUser">
-                                    <form:hidden path="id"/>
-                                    <button class="btn btn-danger">Confirm</button>
-                                </form:form>
-                              </div>
+                            </div>
                           </div>
-                        </div>
                         </div>
                     </div>
                 </main>

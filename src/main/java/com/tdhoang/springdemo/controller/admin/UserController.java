@@ -1,4 +1,4 @@
-package com.tdhoang.springdemo.controller;
+package com.tdhoang.springdemo.controller.admin;
 
 import java.util.List;
 
@@ -31,11 +31,11 @@ public class UserController {
         return "hello";
     }
 
-    @RequestMapping("/admin/user")
+    @RequestMapping("/admin/users")
     public String getUserPage(Model model) {
         List<User> users = this.userService.getAllUsers();
         model.addAttribute("users", users);
-        return "admin/user/table-user";
+        return "admin/user/view";
     }
 
     @RequestMapping("/admin/user/update/{id}")
@@ -56,7 +56,7 @@ public class UserController {
 
             this.userService.handleSaveUser(updatedUser);
         }
-        return "redirect:/admin/user";
+        return "redirect:/admin/users";
     }
 
     @RequestMapping("/admin/user/{id}")
@@ -64,7 +64,7 @@ public class UserController {
         User userDetails = this.userService.getUserById(id);
         model.addAttribute("userDetails", userDetails);
         model.addAttribute("id", id);
-        return "admin/user/show-info-details";
+        return "admin/user/info-details";
     }
 
     @RequestMapping("/admin/user/create")
@@ -76,7 +76,7 @@ public class UserController {
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
     public String createUser(Model model, @ModelAttribute("newUser") User user) {
         this.userService.handleSaveUser(user);
-        return "redirect:/admin/user";
+        return "redirect:/admin/users";
     }
 
     @GetMapping("/admin/user/delete/{id}")
@@ -90,6 +90,6 @@ public class UserController {
     @PostMapping("/admin/user/delete")
     public String deleteUser(@ModelAttribute("deleteUser") User deleteUser){
         this.userService.handleDeleteUserById(deleteUser.getId());
-        return "redirect:/admin/user";
+        return "redirect:/admin/users";
     }
 }
